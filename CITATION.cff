@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the paper."
+title: "Human–AI Mutualism Is Unstable under Capability Asymmetry"
+authors:
+  - family-names: Mohseni
+    given-names: Aydin
+    affiliation: "Carnegie Mellon University"
+type: article
+version: "1.0"
+date-released: 2026-11-12
+license: CC-BY-4.0
+repository-code: "https://github.com/amohseni/mutualism-asymmetry"

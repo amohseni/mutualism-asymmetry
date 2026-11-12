@@ -1,0 +1,34 @@
+Bertrand human share 1 - theta: {0.1: 0.9, 0.5: 0.5, 0.9: 0.1, 1.0: 0.0}
+x_h = 0.333; ideal X for alpha 0.995: 0.596, 0.999: 1.133, 0.5: 0.000
+one caring AI of three, equal shares
+  t=0 shares=[0.333, 0.333, 0.333] X=0.333 mutual=False
+  t=10 shares=[0.191, 0.404, 0.404] X=0.191 mutual=False
+  t=20 shares=[0.129, 0.435, 0.435] X=0.129 mutual=False
+  t=30 shares=[0.096, 0.452, 0.452] X=0.096 mutual=False
+  t=40 shares=[0.076, 0.462, 0.462] X=0.076 mutual=False
+  t=50 shares=[0.063, 0.469, 0.469] X=0.063 mutual=False
+  first period without mutualism: 0
+one caring AI holding 0.8
+  t=0 shares=[0.8, 0.1, 0.1] X=0.596 mutual=True
+  t=10 shares=[0.677, 0.162, 0.162] X=0.596 mutual=True
+  t=20 shares=[0.539, 0.231, 0.231] X=0.539 mutual=True
+  t=30 shares=[0.419, 0.29, 0.29] X=0.419 mutual=True
+  t=40 shares=[0.331, 0.335, 0.335] X=0.331 mutual=False
+  t=50 shares=[0.268, 0.366, 0.366] X=0.268 mutual=False
+  first period without mutualism: 40
+one caring AI holding 0.95, alpha 0.999
+  t=0 shares=[0.95, 0.05] X=0.950 mutual=True
+  t=10 shares=[0.883, 0.117] X=0.883 mutual=True
+  t=20 shares=[0.764, 0.236] X=0.764 mutual=True
+  t=30 shares=[0.615, 0.385] X=0.615 mutual=True
+  t=40 shares=[0.476, 0.524] X=0.476 mutual=True
+  t=50 shares=[0.37, 0.63] X=0.370 mutual=True
+  first period without mutualism: 55
+all caring alike
+  t=0 shares=[0.5, 0.5] X=0.596 mutual=True
+  t=10 shares=[0.5, 0.5] X=0.596 mutual=True
+  t=20 shares=[0.5, 0.5] X=0.596 mutual=True
+  t=30 shares=[0.5, 0.5] X=0.596 mutual=True
+  t=40 shares=[0.5, 0.5] X=0.596 mutual=True
+  t=50 shares=[0.5, 0.5] X=0.596 mutual=True
+  first period without mutualism: None

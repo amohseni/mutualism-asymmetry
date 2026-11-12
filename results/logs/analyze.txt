@@ -1,0 +1,34 @@
+
+== convention: goal value scales with capability
+  exchange           0.368
+  care               0.211
+  near-perfect care  0.419
+  impossible         0.002
+  exchange flag share 0.3677978515625
+  Spearman rho of alpha* (impossible=1) with:
+    kappa  +0.383
+    theta  +0.398
+    delta  +0.153
+    p      +0.324
+    xbar   -0.022
+    s      -0.199
+    w      +0.367
+  now-like n=786: {'exchange': 0.996, 'care': 0.003, 'near-perfect care': 0.001, 'impossible': 0.0} median alpha* 0.0
+  later-like n=294: {'exchange': 0.041, 'care': 0.259, 'near-perfect care': 0.694, 'impossible': 0.007} median alpha* 0.984
+
+== convention: goal value independent of capability
+  exchange           0.368
+  care               0.632
+  near-perfect care  0.000
+  impossible         0.000
+  exchange flag share 0.3677978515625
+  Spearman rho of alpha* (impossible=1) with:
+    kappa  +0.001
+    theta  +0.450
+    delta  +0.206
+    p      +0.462
+    xbar   -0.022
+    s      -0.200
+    w      +0.425
+  now-like n=786: {'exchange': 0.996, 'care': 0.004, 'near-perfect care': 0.0, 'impossible': 0.0} median alpha* 0.0
+  later-like n=294: {'exchange': 0.041, 'care': 0.959, 'near-perfect care': 0.0, 'impossible': 0.0} median alpha* 0.511

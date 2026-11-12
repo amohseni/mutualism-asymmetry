@@ -1,0 +1,9 @@
+Result 2 (elite uses up the input it supplies). baseline b = 0.632
+theta=0.10 alpha* elite 0.000 rest 0.000 average 0.000
+theta=0.50 alpha* elite 0.000 rest 0.808 average 0.729
+theta=0.90 alpha* elite 0.000 rest 0.956 average 0.954
+elite needs alignment first at theta = 0.93
+sensitivity, alpha* of the rest at theta = 0.5:
+   paper                                         0.808
+   rest has elite cost of conflict (dP = 0.2)    0.000
+   equal human bargaining weights                0.000

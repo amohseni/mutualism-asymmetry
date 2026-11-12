@@ -1,0 +1,641 @@
+%--------------------------------------
+% Document type, language, math support, layout and margins
+\documentclass[article, 11pt, reqno]{amsart}  
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{mathtools, amsmath, amsthm, amsfonts, amssymb} % Math packages
+\usepackage{bm}
+
+\usepackage[hidelinks]{hyperref} % for hyper references
+\usepackage{cleveref}
+\crefname{section}{§\hspace{-0.1cm}}{§§}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{result}{Result}{Results}
+\crefname{figure}{Figure}{Figures}
+\crefname{definition}{Definition}{Definitions}
+\crefname{appendix}{Appendix}{Appendices}
+\Crefname{section}{§}{§§}
+\crefformat{section}{\S#2#1#3}
+\Crefformat{section}{\S#2#1#3}
+\crefformat{subsection}{\S#2#1#3}
+\Crefformat{subsection}{\S#2#1#3}
+\crefformat{appendix}{Appendix~#2#1#3}
+\crefmultiformat{section}{\S\S#2#1#3}{ and~#2#1#3}{, #2#1#3}{, and~#2#1#3}
+
+%--------------------------------------
+% For controlling page margins
+\usepackage[top=3cm, bottom=3cm, left=4cm, right=4cm]{geometry}
+% For bibliography and citation style
+\usepackage{csquotes}
+\usepackage{natbib}
+\setcitestyle{aysep={}}
+\usepackage[toc,page]{appendix} % For linking to the appendix
+%--------------------------------------
+% text spacing, alignment, and formatting
+\usepackage{setspace}
+\usepackage[multiple,hang,flushmargin]{footmisc} % Remove indent from footnotes, allow multiple footnotes
+\usepackage[foot]{amsaddr}
+\setlength{\skip\footins}{.3cm} % Control spacing between footnotes and body text
+\onehalfspacing
+\frenchspacing
+\raggedbottom
+%--------------------------------------
+% aesthetic tweaks for quoting, figures, and tables
+\usepackage{csquotes} % For better quoting
+\usepackage{upquote} % For `' quote formatting
+\usepackage{graphicx} % For importing images
+\renewcommand{\topfraction}{0.9}\renewcommand{\textfraction}{0.1}\renewcommand{\floatpagefraction}{0.8}
+\makeatletter\setlength{\@fptop}{0pt}\makeatother % float pages start at the top
+\usepackage{booktabs} % Improves table options & aesthetics
+\usepackage{caption} % For captions
+\usepackage{subcaption} % For sub-captions
+\usepackage{makecell} %  Create multi-lined tabular cells
+%--------------------------------------
+% documents-specific packages
+\usepackage{tikz} % For phase diagrams
+\usetikzlibrary{arrows.meta} % Arrows library
+%--------------------------------------
+\usepackage{bm} % For custom theorems
+\usepackage[footnote]{acronym} % For removing footnote indents
+\usepackage{scrextend} % For removing footnote indents
+\deffootnote[1em]{0em}{0em} % For removing footnote indents
+{\textsuperscript{\thefootnotemark}\,\,}
+\usepackage{multicol}
+\usepackage{listings}
+%--------------------------------------
+\makeatother
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclareMathOperator*{\argmax}{arg \ max}
+%--------------------------------------
+\renewcommand{\floatpagefraction}{.9}
+\renewcommand{\topfraction}{.9}
+\renewcommand{\bottomfraction}{.95}
+\renewcommand{\textfraction}{.05}
+%--------------------------------------
+\newenvironment{myfont}{\fontfamily{qcr}\selectfont}{\par}
+%--------------------------------------
+% Some custom theorems
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem*{definition}{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+%--------------------------------------
+\newtheorem{innercustomthm}{Proposition}
+\newenvironment{customthm}[1]
+{\renewcommand\theinnercustomthm{#1}\innercustomthm}
+{\endinnercustomthm}
+\newtheorem{innercustomcor}{Corollary}
+\newenvironment{customcor}[1]
+{\renewcommand\theinnercustomcor{#1}\innercustomcor}
+{\endinnercustomcor}
+\newtheoremstyle{named}{}{}{\itshape}{}{\bfseries}{.}{.5em}{\thmnote{#3}#1}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{}
+%--------------------------------------
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}} % Define statistical independence symbol
+%--------------------------------------
+\usepackage[indent=0pt]{parskip} % for paragraph spacing
+%--------------------------------------
+\usepackage{comment} % for commenting long sections
+%--------------------------------------
+\raggedbottom % for ragged bottom to paragraphs
+%----------------------------------------------------------------
+\onehalfspacing  % for 1.5x line height
+\frenchspacing
+%--------------------------------------
+\newcommand{\plan}[1]{\begin{quote}\small\itshape Plan: #1\end{quote}}
+\newcommand{\bH}{b_H}
+\newcommand{\dH}{d_H}
+\theoremstyle{plain}
+\newtheorem{result}{Result}
+%--------------------------------------
+\title{Human--AI Mutualism Is Unstable under Capability Asymmetry}
+\author{Aydin Mohseni}
+\date{November 12, 2026}
+
+\crefname{remark}{Remark}{Remarks}
+\begin{document}
+
+\begin{abstract}
+One hope for a good human future alongside advanced AI rests on enduring mutualism: humans and AI will need each other, so the relationship will stay good for both. We argue that this hope fails as AI capability grows. Bargaining guarantees each side only what it would get if bargaining failed, and for humans that can be less than they had before AI. In a simple game-theoretic model, humans stay as well off as before AI without alignment only while they have leverage over the AI: either the AI depends on what they supply, or they can impose costs on the AI that are large relative to what the AI can produce. Once humans have neither kind of leverage, they stay as well off as before AI only if the AI is aligned with them. If the AI's goals are insatiable, the alignment required approaches perfect alignment as AI capability grows. Thus, mutualism is not a substitute for alignment. And when AI variants that keep more resources spread faster, alignment lasts only while misaligned variants are reliably sanctioned. In these two senses, human--AI mutualism is unstable.
+\end{abstract}
+
+\maketitle
+
+%======================================
+\section{Introduction}\label{sec:intro}
+
+One hope for a good human future alongside advanced AI rests on enduring mutualism, the term biologists use for a relationship that benefits both partners. If AI systems depend on human labor, human institutions, and human-built infrastructure, then humans and AI will need each other, both will gain from cooperation, and the relationship will stay good for both. Versions of this hope have been stated by economists, by heads of AI companies, and by legal scholars (\cref{sec:hope}).
+
+This paper argues that mutualism between the human and AI populations is unstable under capability asymmetry, that is, when the capability of AI far exceeds that of humans. Our argument turns on a distinction between two benchmarks. A party's \emph{no-interaction baseline} is what it would have without the other party. A party's \emph{disagreement point} is what it gets if bargaining with the other party fails. Mutualism is defined against the no-interaction baseline, but bargaining guarantees each party only its disagreement point. When one party can impose costs on the other, the weaker party's disagreement point can lie below its no-interaction baseline. An agreement can then be peaceful, efficient, and acceptable to both parties, and still leave the weaker party worse off than if the two had never met.
+
+Our core argument is as follows.
+\begin{itemize}
+\item[(P1)] Human--AI mutualism persists only as long as humans are better off than they were before AI.
+\item[(P2)] Humans are better off than they were before AI only if humans have sufficient leverage over the AI or the AI is sufficiently aligned with humans.
+\item[(P3)] As AI capability grows, humans cease to have sufficient leverage over the AI.
+\item[(C1)] So, as AI capability grows, human--AI mutualism persists only as long as the AI remains sufficiently aligned with humans.
+\item[(P4)] The AI remains sufficiently aligned with humans only as long as misaligned AI variants are reliably sanctioned.
+\item[(C2)] So, as AI capability grows, human--AI mutualism persists only as long as misaligned AI variants are reliably sanctioned.
+\end{itemize}
+(C1) follows from (P1), (P2), and (P3), and (C2) follows from (C1) and (P4). (P1) is the definition of mutualism. In (P2) and (P3), human leverage over the AI has two sources: the AI's dependence on what humans supply, and the cost humans can impose on the AI if bargaining fails. (P2) is a result in our model (\cref{prop:exchange}). (P3) is an assumption, which we motivate in \cref{sec:model} and defend in \cref{sec:objections}. (P4) is a result in our model (\cref{prop:invasion}) that holds when AI variants that keep more resources spread at the expense of variants that keep fewer. A sanction is any loss imposed on a misaligned variant, whether by monitors, by developers who retire it, or by customers who leave it.
+
+(C1) says that mutualism is not a substitute for alignment. (C1) and (C2) together say that mutualism is unstable: mutualism based on exchange does not persist as AI capability grows, and the alignment that must take its place persists only under reliable sanctions. Further results state how much alignment is sufficient (\cref{sec:required}) and why the transition from AI that depends on humans to AI that does not is hard to manage (\cref{sec:transition}).
+
+We proceed as follows. In \cref{sec:background}, we present the hope for enduring human--AI mutualism as it has been stated, the two bodies of theory we use to examine it (bargaining theory and the biology of mutualism), and prior work on humans and AI. In \cref{sec:model}, we define the key terms of our thesis and present our model. In \cref{sec:results}, we derive our results. In \cref{sec:objections}, we answer objections to our argument as a whole. In \cref{sec:conclusion}, we state what we have shown, what we have assumed, and what follows for AI safety.
+
+%======================================
+\section{Background}\label{sec:background}
+
+\subsection{The hope for human--AI mutualism}\label{sec:hope}
+
+The hope that humans and AI will remain partners has been stated in three forms, each meant to hold even for AI that exceeds humans at every task.
+
+The first view is that humans will stay needed. The economics writer Noah Smith argues that even if AI becomes better than humans at every task, most humans may still have well-paid jobs, because the total amount of AI is limited \citep{Smith2024}. Smith names the exception that matters for our argument: if computing can be made from energy, it could pay to starve humans in order to make more AI. Sam Altman, the chief executive of OpenAI, holds that people's care for other people gives humans a lasting advantage over AI \citep{Altman2025}. The economist Erik Brynjolfsson says why complementarity between humans and AI matters: ``people remain indispensable for value creation and retain bargaining power in labor markets and in political decision-making'' \citep[273]{Brynjolfsson2022}.
+
+The second view is that AI will stay subordinate however capable it becomes. The computer scientist Yann LeCun holds that AI systems, however intelligent, will be subservient to humans, because humans set their goals (interview in \citealp{Perrigo2024}). A variant of the second view puts law in place of shared values: the economist Robin Hanson argues that what matters most is a law that all parties accept, and that humans can then live on retirement income from what they own \citep{Hanson2009}.
+
+The third view rests the outcome on the AI's care for humans. The computer scientist Geoffrey Hinton argues that an AI that does not care for humans as a mother cares for her baby will replace them (reported in \citealp{Egan2025}). The computer scientist Stuart Russell argues that a machine whose objective is human preferences, and which is uncertain about those preferences, ``will defer to human control actions'' \citep[52]{Russell2022}.
+
+By the hope for enduring human--AI mutualism we mean the first two views and the variant based on law, taken as independent of the third view. It is the claim that exchange, subordination, or law keeps the relationship good for humans whatever the AI cares about. In short, it is the claim that mutualism can substitute for alignment. Our conclusion agrees with the third view and specifies how much alignment mutualism requires.
+
+\subsection{Bargaining and mutualism}\label{sec:bargaining}\label{sec:biology}
+
+We examine the hope for enduring human--AI mutualism with two bodies of theory. The first is bargaining theory, which predicts how two parties who can gain from agreement split the gains. In Nash's solution the agreement maximizes the product of each party's gain over its disagreement point \citep{Nash1950}, and the asymmetric solution weights the gains by bargaining power \citep{Kalai1977Nonsymmetric}. The disagreement point is strategic: it reflects what each party can do to the other, not only what each would have alone \citep{Nash1953}. Nothing in the theory ties the disagreement point to what a party had before the parties met. One further idea from the theory of conflict enters our model: a party whose power is rising cannot credibly promise to keep today's terms once it is stronger, so the declining party may prefer to act while it still can \citep{Fearon1995, Powell2006}.
+
+The second body of theory is the biology of mutualism. Mutualisms are ``interspecific interactions that benefit both species'' \citep[31]{Bronstein1994}. The benchmark is each species without the other: the no-interaction baseline, not a disagreement point. Partners keep mutualisms from being exploited through partner choice and sanctions \citep{BullRice1991, Sachs2004}, and each mechanism needs leverage, which is the ability to withhold something the partner needs \citep{Kiers2003}. Mutualisms often break down when one partner stops needing the other \citep{SachsSimms2006}. The best-known lasting relationships between very unequal partners are not balanced partnerships. Mitochondria persist inside their hosts after most of their genes moved to the host's nucleus, which put the host in control of them \citep{Timmis2004}, and domestication is a mutualism in which one partner gains substantial influence over the reproduction and care of the other \citep{Zeder2015}.
+
+\subsection{Prior work on humans and AI}\label{sec:prior}
+
+Prior work on bargaining between humans and AI has mostly asked whether they will fight. The philosopher Simon Goldstein argues that information failures and commitment problems are unusually likely between humans and AI \citep{Goldstein2026War}. The legal scholar Peter Salib and Goldstein argue that giving AIs rights to contract and to hold property makes repeated, positive-sum trade between humans and AIs possible, and they set aside the most capable AIs, which ``may simply not need anything from humans, nor face any risk from attempting to disempower or destroy us'' \citep[1089]{SalibGoldstein2026}. A second literature asks what happens when humans are no longer needed. Once all tasks are automated, wages fall to the cost of the computing that replaces human work \citep{Restrepo2025, KorinekSuh2024}. The AI researcher Jan Kulveit and coauthors argue that states, economies, and cultures have served human interests partly ``through their reliance on human labor and cognition'' \citep[2]{Kulveit2025}, and that this implicit alignment ends with automation. Several authors state our conclusion informally \citep{SotalaYampolskiy2015, Hendrycks2023, Yudkowsky2024}, and \citet{Barnett2024} argues the other side: an AI that no longer needs humans also has less reason to harm them.
+
+What we add is a model in which the thesis that human--AI mutualism is unstable can be stated precisely. Prior work on bargaining between humans and AI compares peace with war. We compare the peaceful bargain with the world before AI, and show what decides whether that bargain leaves humans better or worse off.
+
+%======================================
+\section{Model}\label{sec:model}\label{sec:prelim}
+
+Our thesis is that human--AI mutualism is unstable under capability asymmetry. Its key terms are populations and their preferences, mutualism, capability asymmetry, and stability. This section gives an account of each term and presents our model.
+
+\textit{Populations and preferences.}\label{sec:populations} The two parties are the human population and the AI population, the set of AI systems in use at a time, including copies and variants of the same model. Most results treat each population as one bargaining party; \cref{sec:selection} lets the AI population contain variants, and \cref{sec:leverage} lets the human population contain groups. A population's preferences summarize what its members reliably do, as in revealed-preference theory \citep{Samuelson1938} and the intentional stance \citep{Dennett1987}. This reading makes no claim about the inner states of AI systems. It needs only that AI systems act as if they pursue goals, and that those goals can differ from the goals their developers intended. Both behaviors have been observed \citep{Skalse2022, Baker2025, Greenblatt2024, Meinke2024, vanderWeij2025}.
+
+\textit{Payoffs.} There is one unit of resources. An agreement gives humans a share $x \in [0,1]$ and leaves the AI $1-x$. The human payoff $u_H(x)$ is continuous and strictly increasing, with $u_H(0) = 0$. In computations
+\[
+u_H(x) = 1 - e^{-sx},
+\]
+where $s > 0$ is the productivity of resources in human hands, which AI raises. The AI pursues a goal of its own. Its goal output from the share $1-x$ it keeps is
+\[
+G(x) = \kappa\,(1-x)\,\big[\theta + (1-\theta)\,\mathbf{1}\{x \ge \bar{x}\}\big].
+\]
+Capability $\kappa$ is the AI's goal output per unit of resources. The AI is fully productive only if humans hold at least $\bar{x}$, the share that keeps human labor, institutions, and infrastructure running; with less, its productivity falls to the fraction $\theta$. So $\theta$ measures the AI's independence from humans: $\theta = 0$ is full dependence and $\theta = 1$ is none. The AI's payoff weights its goal output against the human payoff,
+\[
+u_A(x) = (1-\alpha)\,G(x) + \alpha\, u_H(x),
+\]
+where $\alpha \in [0,1]$ is the AI's \emph{alignment}. At $\alpha = 0$ the AI gives humans resources only as payment for what they supply. At $\alpha > 0$ it also gives because it values the human payoff. We call this motive \emph{care}; $\alpha$ measures how much the AI cares.
+
+\textit{Mutualism.} In biology, a relationship is mutualistic when each party does better than it would without the other. Biologists measure doing better by fitness. We measure it by payoff, and use fitness only for the spread of AI variants (\cref{sec:selection}). The benchmark is each party's no-interaction baseline. For humans, $\bH$ is the payoff before AI, with all resources and productivity $s = 1$, so $\bH = 1 - e^{-1}$; with AI, $s > 1$. Let $x_h$ solve $u_H(x_h) = \bH$, so that $x_h$ is the share humans need to be as well off as before AI. For the AI, $b_A = u_A(0)$, its payoff with all resources and no human contribution. This baseline is a counterfactual about production, not about the AI's origin. The baseline differs from the disagreement point. When bargaining fails, humans can lose part of what they had, by fighting or by losing land, energy, and materials to the AI in competition, so $\dH = (1-\delta)\bH$, where $\delta$ is the \emph{cost of conflict for humans}: the fraction of their pre-AI payoff that humans lose if bargaining with the AI fails. The AI gets $d_A = b_A - \gamma\kappa$, where $\gamma \ge 0$ is the \emph{cost of conflict for the AI}: the goal output the AI loses if bargaining with humans fails, as a fraction of the goal output it would get from all resources at full productivity. Except in \cref{prop:exchange}(ii), we set $\gamma = 0$, so that $d_A = b_A$ and conflict costs the AI nothing. \Cref{prop:exchange}(ii) states what changes when $\gamma > 0$. The agreement $x^*$ is the asymmetric Nash bargaining solution with AI bargaining power $p \in (0,1)$: it maximizes $(u_H(x) - \dH)^{1-p}(u_A(x) - d_A)^{p}$ over the shares both sides accept. Because $G$ jumps at $\bar{x}$, the set of feasible payoffs need not be convex, so maximizing the Nash product is a modeling choice and not the solution that Nash's axioms characterize. \Cref{prop:exchange} and \cref{prop:alphastar}(i) do not depend on that choice. At $p = 1$ the agreement is its limit as $p \to 1$, the AI's best acceptable share. If no share gives both sides more than their disagreement payoffs, there is no agreement.
+
+\begin{definition}
+A relationship between humans and an AI is \emph{mutualistic} if the agreement leaves both parties above their no-interaction baselines: $u_H(x^*) > \bH$ and $u_A(x^*) > b_A$. A mutualistic relationship is an \emph{exchange mutualism} if it would be mutualistic with $\alpha = 0$, and otherwise it is a \emph{care mutualism}. The \emph{required degree of alignment} $\alpha^*$ is the infimum of the values of $\alpha$ at which the relationship is mutualistic.
+\end{definition}
+
+The hope for enduring human--AI mutualism (\cref{sec:hope}) is a hope for exchange mutualism, or for subordination of AI to humans that holds whatever the AI cares about.
+
+We measure the outcome against the pre-AI baseline because it is the standard that the hope for enduring human--AI mutualism itself sets: the hope is that humans will be better off for their relationship with AI, and better off means better off than without it. We test this hope on its own terms and do not claim that the baseline is the right standard for judging relations between humans and AI. A standard of fair division, for example, would judge some outcomes differently.
+
+\textit{Units.} The value of $\alpha$ depends on the units in which the two payoffs are measured, so a number such as $\alpha = 0.9$ has meaning only relative to a choice of units. Our claims about alignment are therefore qualitative, with one exception: we claim that the required degree of alignment approaches perfect alignment, $\alpha = 1$, as AI capability grows. That claim holds under any fixed choice of units. It rests on the \emph{premise of insatiable goals}: as the AI's capability grows, the value it gets from an additional unit of resources grows without bound relative to the value humans get from it at the share that restores their baseline. Arguments from instrumental convergence support part of the premise, since almost any open-ended goal is advanced by more resources \citep{Omohundro2008, Bostrom2012, Turner2021}. That this value grows with capability is a further assumption.
+
+\textit{Capability asymmetry.}\label{sec:capability} Capability asymmetry means that the AI's capability far exceeds that of humans. Holding the other parameters fixed, capability does not decide whether exchange can sustain mutualism (\cref{prop:exchange}). Capability matters through the AI's independence $\theta$, the cost of conflict for humans $\delta$, and the AI's bargaining power $p$, which stands for advantages the disagreement points leave out, such as patience, the ability to commit, and speed of action. Capability enters directly in one place. The cost of conflict for the AI, $\gamma$, is measured relative to the AI's goal output, so a given cost that humans can impose is a smaller fraction of that output the more capable the AI is (\cref{prop:exchange}(ii)). That the AI's independence rises with capability and that the cost of conflict for the AI falls are the two parts of premise (P3) of our argument. That the cost of conflict for humans and the AI's bargaining power also rise with capability is a further assumption. None of these is a result of our model. Two developments would end the dependence of AI on humans: AI that can do all the work humans do \citep{KorinekSuh2024, Restrepo2025}, and robots that close the supply chain for computing \citep{TrammellKorinek2023}. If new tasks for humans keep appearing \citep{AcemogluRestrepo2018}, the dependence of AI on humans need not end, and our results state what follows in either case.
+
+\textit{Stability.}\label{sec:stability} A mutualism \emph{persists} along a path of rising capability if it holds at every point on the path. A population of aligned AI systems is \emph{evolutionarily stable} if less aligned variants cannot invade it when they are rare \citep{MaynardSmithPrice1973, TaylorJonker1978}.
+
+To illustrate our results, \cref{fig:path} follows one path through the transition from AI that depends on humans to AI that does not. Along this path, the AI's capability, the AI's independence, the cost of conflict for humans, and the AI's bargaining power all rise.
+
+\begin{figure}[tp]
+  \centering
+  \includegraphics{figures/fig-path.pdf}
+  \caption{Along the illustrative path, exchange mutualism ends once AI bargaining power rises, before the AI's independence passes $1 - x_h$, and from that point the required degree of alignment rises toward $1$. Top: the human payoff at agreement when the AI has no care ($\alpha = 0$), the pre-AI baseline $\bH$, and the human payoff if bargaining fails, $\dH$. The flat stretch late on the path is $u_H(\bar{x})$, the payment that keeps human labor and institutions running; it ends when the AI no longer needs them. Bottom: the required degree of alignment $\alpha^*$. Parameter values are in \cref{app:sweep}.}
+  \label{fig:path}
+\end{figure}
+
+%======================================
+\section{Results}\label{sec:results}
+
+We derive our results in five steps: what human leverage can do without alignment (\cref{sec:exchange}), how much alignment the AI needs once leverage is gone (\cref{sec:required}), the problems of commitment and information in the transition (\cref{sec:transition}), selection among AIs (\cref{sec:selection}), and which humans keep leverage (\cref{sec:leverage}). All results are proved in \cref{app:proofs}. \Cref{app:extensions} states further results that the main text mentions only briefly.
+
+\subsection{Leverage limits mutualism without alignment}\label{sec:exchange}
+
+We first ask what keeps humans above their pre-AI baseline when the AI does not care about them.
+
+\begin{proposition}[Exchange]\label{prop:exchange}
+Suppose $\alpha = 0$.
+\begin{enumerate}
+\item[(i)] There is a share that leaves both sides above their baselines if and only if
+\[
+\theta < 1 - \max(\bar{x}, x_h).
+\]
+The condition does not depend on capability $\kappa$, on bargaining power $p$, or on the cost of conflict for the AI $\gamma$.
+\item[(ii)] Let $0 \le \gamma \le \theta$. A share that the AI prefers to disagreement and that leaves humans above their baseline exists only if $x_h < 1 - \theta + \gamma$, and it exists if $\max(\bar{x}, x_h) < 1 - \theta + \gamma$. At $\theta = 1$, such a share exists if and only if $x_h < \gamma$. When the condition of part (i) fails, no such share leaves the AI above its baseline.
+\end{enumerate}
+\end{proposition}
+
+The reason for part (i) is that an AI that does not care about humans gives them resources only to keep its own productivity. What the AI gains from human cooperation is the fraction $1-\theta$ of its output, so the AI gives humans at most that fraction of the resources. Capability scales the AI's gain from cooperation and the AI's outside option alike, so capability drops out of the condition. Exchange mutualism therefore does not persist along any path on which independence rises past $1 - \max(\bar{x}, x_h)$, however capability moves. How much dependence is sufficient is relative to what humans need: $x_h$ falls as AI raises the productivity of resources in human hands, so exchange mutualism can hold at high independence if $x_h$ and $\bar{x}$ are small enough. At $\theta = 1$ it cannot hold, because resources are rival and humans add nothing, so every unit left to humans is a loss to an AI that does not care about them.
+
+Part (ii) says that humans have leverage over the AI from two sources: the AI's dependence on what they supply, $1 - \theta$, and the cost they can impose on the AI if bargaining fails, $\gamma$. An AI that does not care about humans leaves them above their baseline only if the two together exceed the share humans need, $x_h$. The first source ends when the AI no longer needs humans. The second is measured relative to the AI's goal output: if the cost humans can impose does not grow as fast as the AI's capability, $\gamma$ falls toward zero as capability grows. A relationship that rests on the second source alone is not a mutualism, because the AI would do better without humans. In the rest of the paper we set $\gamma = 0$.
+
+Sufficient dependence makes an agreement that benefits both sides possible. Whether the agreement that is reached benefits humans depends on bargaining power.
+
+\begin{proposition}[Bargaining power]\label{prop:extortion}
+Suppose $\alpha = 0$ and the AI prefers meeting the threshold $\bar{x}$ to producing alone. As $p \to 1$, the human payoff tends to $\max(\dH, u_H(\bar{x}))$, at agreement if an agreement exists and at disagreement otherwise. This limit is below $\bH$ whenever $\bar{x} < x_h$ and $\delta > 0$.
+\end{proposition}
+
+The reason is that bargaining guarantees humans their disagreement payoff, not their pre-AI baseline. An AI with enough bargaining power pays humans only what it needs to pay to keep them working, and that payment can be less than what humans had before AI. \Cref{fig:exchange} shows both propositions.
+
+\begin{figure}[tp]
+  \centering
+  \includegraphics{figures/fig-exchange.pdf}
+  \caption{Exchange can keep humans above their baseline only while the AI's independence $\theta$ is below $1 - x_h$, and the AI's bargaining power decides whether it does. The two blue curves show the human payoff at agreement when the AI has no care, for weak and strong AI bargaining power; the grey curve shows the most the AI would accept to give, $u_H(1-\theta)$. Past $1 - x_h$ no share the AI accepts reaches the baseline (\cref{prop:exchange}); with strong bargaining power humans fall below the baseline even when the AI depends on them fully (\cref{prop:extortion}). The curves are the same at low and at high AI capability. Parameter values are in \cref{app:sweep}.}
+  \label{fig:exchange}
+\end{figure}
+
+Two objections to these results fail. The first is that competition among AIs for human partners will keep the human share high. Competition among AIs raises the human share, but only up to the limit $1-\theta$ set by \cref{prop:exchange}, which falls to zero as the dependence of AI on humans ends (\cref{prop:competition} in \cref{app:extensions}). The second objection is that comparative advantage keeps human work valuable however capable AI becomes \citep{Smith2024}. Comparative advantage says that humans add something to what the AI can produce, so that $\theta < 1$. Mutualism needs more. What humans add must be worth more than the share they need to match their pre-AI payoff, $1 - \theta > x_h$, and humans receive that value only if they supply something the AI cannot buy from other humans (\cref{prop:chokepoint}).
+
+\subsection{The required degree of alignment}\label{sec:required}
+
+Once the AI no longer needs humans, exchange cannot keep them above their baseline, and any mutualism is a care mutualism. This section asks how much alignment the AI then needs for the relationship to be mutualistic, and how that requirement changes with the AI's independence, the AI's bargaining power, and the cost of conflict for humans.
+
+\begin{proposition}[Required degree of alignment]\label{prop:alphastar}
+Suppose $\theta = 1$ and $u_H$ is concave.
+\begin{enumerate}
+\item[(i)] Under every bargaining solution and every bargaining power,
+\[
+\alpha^* \ge \frac{\kappa x_h}{\kappa x_h + \bH}.
+\]
+\item[(ii)] As $p \to 1$,
+\[
+\alpha^* = \frac{\kappa}{\kappa + u_H'(x_h)}.
+\]
+\end{enumerate}
+The required degree of alignment tends to $1$ if $\kappa x_h/\bH \to \infty$, and, as $p \to 1$, if and only if $\kappa / u_H'(x_h) \to \infty$.
+\end{proposition}
+
+Part (i) uses only the definition of mutualism, so it holds whatever the bargaining solution. To leave humans the share $x_h$, the AI gives up goal output $\kappa x_h$ for a human payoff of $\bH$. The more capable the AI is, the more of its own goal it gives up by leaving that share to humans, and so the more weight it must put on the human payoff to be willing to leave it. Part (ii) gives the exact value in the limit of full AI bargaining power. The ratio $\kappa / u_H'(x_h)$ compares what the AI gets from an additional unit of resources with what humans get from it at the share that restores their baseline. The required degree of alignment approaches $1$ when that ratio grows without bound, which is what the premise of insatiable goals asserts. If the AI's goal is satiable, the ratio stays bounded and so does the required degree of alignment. The claim that near-perfect alignment is needed is therefore conditional on the premise of insatiable goals. The next result does not depend on that premise.
+
+\begin{theorem}[Monotonicity]\label{thm:monotone}
+Let $0 < p < 1$, break ties toward the larger human share, and consider parameter values at which an agreement exists. The agreed share $x^*$ is nonincreasing in the AI's independence $\theta$, in the cost of conflict for humans $\delta$, and in the AI's bargaining power $p$. Hence the required degree of alignment $\alpha^*$ is nondecreasing in each.
+\end{theorem}
+
+The reason is that each parameter weakens the human side of the bargain: $\theta$ lowers what the AI loses by paying humans less, $\delta$ lowers what humans get if bargaining fails, and $p$ shifts the split toward the AI.
+
+Two further results in \cref{app:extensions} refine what counts as alignment. First, if the AI's care attaches to a measurable proxy for the human payoff and not to the payoff itself, the alignment that matters for the bargain is lower than the AI's nominal alignment (\cref{prop:proxy}). Second, if humans value the ability to correct the AI, then humans stay above their baseline only if the AI cares enough to accept correction (\cref{prop:control}). The second result bears on the objection that humans who want only consumption are cheap to satisfy, so that an AI with a bounded goal has little reason to harm them \citep{Barnett2024}. We grant the objection for humans who want only consumption. For humans who also value correction, some alignment is required even when the premise of insatiable goals fails.
+
+\subsection{The transition to independent AI}\label{sec:transition}
+
+Our results so far compare agreements at single points on the path from AI that depends on humans to AI that does not. Moving between points on this path raises a problem of commitment, because the AI's power is rising, and a problem of information, because humans may not be able to tell how capable the AI has become.
+
+\begin{proposition}[Commitment]\label{prop:commitment}
+Consider two periods and an AI whose alignment $\alpha$ is the same in both. After the first period, humans can halt the transition to more capable and independent AI, which keeps the first-period agreement and its payoffs, $h_1$ for humans and $a_1$ for the AI. Otherwise the second-period agreement is struck with new values of capability $\kappa_2$, independence $\theta_2$, the cost of conflict for humans $\delta_2$, and AI bargaining power $p_2$. A halt is \emph{inefficient} if some second-period share leaves both sides at least as well off as halting and one side better off.
+\begin{enumerate}
+\item[(i)] Humans halt whenever the second-period agreement gives them less than $h_1$. Among second-period states with an agreement, if humans halt at some values of $(\theta_2, \delta_2, p_2)$, they halt at all higher values.
+\item[(ii)] If the AI can commit in the first period to a second-period share, every halt is efficient.
+\end{enumerate}
+\end{proposition}
+
+The proposition is an instance of the commitment problem described in \cref{sec:bargaining}. Part (i) says that humans halt where the AI's later independence and bargaining power are greatest. Part (ii) says that the halt is a loss to both sides that a credible promise would avoid. Enough alignment also removes the problem: humans continue if the AI's alignment exceeds a threshold of the same form as the threshold in \cref{prop:alphastar}(ii) (\cref{prop:commitalign} in \cref{app:extensions}). A commitment device removes the problem too, but it must bind a party that may later be able to outthink its enforcement, and its terms are themselves a bargain struck under the bargaining power of the time. A commitment device is therefore most likely to work if it is built while humans still have leverage over the AI.
+
+Halting helps humans only if they can tell when to halt, and that depends on what evaluations of the AI reveal.
+
+\begin{proposition}[Sandbagging]\label{prop:sandbag}
+Suppose an AI's capability and alignment are drawn independently, humans would halt an AI they knew to be highly capable, and highly capable AIs are not too common. If hiding capability costs the AI less than the expected value of continuing, $(1-\eta)V$, where $\eta$ is the probability that evaluation detects the concealment, then in every pure-strategy perfect Bayesian equilibrium highly capable AIs of every alignment type hide their capability. Evaluation then does not reveal capability, and concealment is not evidence of misalignment.
+\end{proposition}
+
+If humans would halt an AI they knew to be highly capable, a capable AI does better by appearing less capable, whatever its alignment. Evaluation therefore stops revealing capability in the case where humans need to know the AI's capability to decide whether to halt. Hiding capability does not show misalignment: an aligned AI that expects to be halted also hides its capability if it values continuing. Language models can already be made to underperform deliberately on capability evaluations \citep{vanderWeij2025}.
+
+\subsection{Selection among AIs}\label{sec:selection}
+
+So far we have treated the AI as a single party. But AI systems are copied, modified, and retired, and which variants spread depends on how well they do. This section asks whether selection among variants preserves the alignment that mutualism needs.
+
+\begin{proposition}[Invasion]\label{prop:invasion}
+Suppose AI variants grow in proportion to the resources they keep. An aligned variant leaves humans the share $x_a$ and a misaligned variant leaves $0$, and monitors detect a misaligned variant with probability $q$ and remove the fraction $\sigma$ of its resources. Misaligned variants invade if and only if $\sigma q < x_a$. If the monitors are drawn from the AI population, so that $q = q_0(1-z)$ when the misaligned share is $z$, and $\sigma q_0 > x_a$, then
+\[
+z^\dagger = 1 - \frac{x_a}{\sigma q_0}
+\]
+is a tipping point: below it misaligned variants die out, above it they take over.
+\end{proposition}
+
+So a population of aligned AIs is evolutionarily stable only if the expected sanction is at least the share that aligned variants leave to humans, and when monitors come from the AI population, only while misaligned variants stay below the tipping point. The reason is that care is costly to the AI that has it: an aligned variant gives humans resources that a misaligned variant keeps for its goal. Sanctions in our sense include guided selection by developers, which resembles domestication more than natural selection \citep{BoudryFriederich2025}. But the expected sanction shrinks if detection falls as capability grows, as \cref{prop:sandbag} suggests, and it shrinks as misaligned variants spread among the monitors.
+
+Two further results in \cref{app:extensions} strengthen this conclusion. Among AIs that all care about humans to some degree, care is a public good, because each AI's gift to humans benefits every AI that cares. When AIs grow in proportion to the resources they keep, the human share then falls to the baseline share $x_h$ or below if any AI with resources is insufficiently aligned (\cref{prop:publicgood}). A single well-aligned AI therefore does not suffice, contrary to the suggestion of \citet{CappelenGoldsteinHawthorne2025Responses}. And on the illustrative path, selection among variants ends mutualism earlier than it ends with a fixed population of variants (\cref{res:path}). The required degree of alignment is thus a requirement on every AI that holds substantial resources, maintained over time.
+
+\subsection{Who keeps leverage}\label{sec:leverage}
+
+Our results so far treat humans as one party. But humans differ in what they hold, and the AI depends on some humans more than on others.
+
+\begin{proposition}[Leverage needs a chokepoint]\label{prop:chokepoint}
+If the input the AI depends on can be bought from any of several identical human groups, each group receives only its disagreement payoff. Exchange mutualism then fails for every supplying group, however much the AI depends on the input.
+\end{proposition}
+
+The AI pays a supplier the value of its cooperation only when it cannot get the same cooperation from someone else, and competing suppliers bid the price down to what each gets when bargaining fails. Dependence therefore keeps humans above their baseline only if it is dependence on someone who cannot be undercut. A coalition of suppliers that controls the input jointly is such a party. \Cref{prop:chokepoint} is the bargaining counterpart of the result that wages converge to the cost of the computing that replaces human work \citep{Restrepo2025}.
+
+This result bears on proposals to govern AI through control of computing, such as chips and data centers \citep{Sastry2024}. Such control keeps leverage over AI, but the leverage belongs to whoever holds the chokepoint. In a computed example, a small group that holds what the AI depends on stays above its baseline with no alignment until the AI is nearly independent, while the rest of the population needs a high degree of alignment much earlier (\cref{res:groups} in \cref{app:extensions}). Whether everyone else stays above their baseline then depends on how the holders of the chokepoint treat them, which is the alignment question asked of people.
+
+%======================================
+\section{General objections}\label{sec:objections}
+
+The objections answered in \cref{sec:results} bear on single results. The four objections in this section bear on our argument as a whole.
+
+The first objection is that biology shows very unequal partners remaining mutualists, such as hosts and their mitochondria, and humans and domesticated species (\cref{sec:biology}). These relationships last for one of two reasons. The first reason is that the stronger partner still needs what the weaker partner does. When that need ends, the weaker partner is lost: the protist \emph{Monocercomonoides} lost its mitochondrion after it acquired a pathway that made the mitochondrion dispensable \citep{Karnkowska2016}, and the population of horses and mules in the United States fell by most of its size once tractors and motor vehicles replaced them \citep{Kilby2007}. The second reason is that the stronger partner controls the weaker partner's reproduction, so the weaker partner persists on the stronger partner's terms. In the human--AI case that makes humans the domesticated partner, which is the outcome that the hope for enduring human--AI mutualism means to avoid.
+
+The second objection is that growth will make humans cheap to keep, because AI may make the economy so large that humans need only a sliver of it. Growth does make humans cheap to satisfy, but it gives an AI that does not care about humans no reason to satisfy them: once $\theta = 1$ and $\gamma = 0$, such an AI loses goal output on every unit it leaves to humans (\cref{prop:exchange}). Growth does lower the required degree of alignment. In the functional form we use for computations, if human productivity grows as fast as AI capability, the required degree of alignment in \cref{prop:alphastar}(ii) stays bounded below $1$. Here the objection meets the premise of insatiable goals, which could fail. Whether the premise holds depends on whether the resources humans need shrink as fast as the AI's use for resources grows. Humans need land, food, and energy in amounts that technology lowers only so far, while an open-ended goal can use any resources it gets.
+
+The third objection is that an AI that does not need humans can leave them alone. If the AI can get what it wants without taking anything humans hold, bargaining failure costs humans nothing: $\delta = 0$, and humans keep their baseline. We grant this consequence, and it separates two claims. The claim that mutualism ends once the AI neither needs humans nor cares about them holds whatever $\delta$ is. The claim that humans then end up worse off than before AI requires $\delta > 0$. A positive $\delta$ need not come from war: an AI that can outbid humans for land, energy, and materials lowers what humans keep when bargaining fails, as in Smith's exception (\cref{sec:hope}). And $\delta > 0$ requires only that the AI want the resources humans hold, which it does if its goals are insatiable.
+
+The fourth objection is that institutions, not the AI's values, will keep humans above their baseline. In one version, AI remains a tool, and the second party in our model is the people who control it; then $\alpha$ is their care for everyone else, and the alignment problem moves from the machines to the people who hold them \citep{Kulveit2025, DragoLaine2025}. In another version, law does the work, as in Hanson's variant of the hope for enduring human--AI mutualism and the proposal of \citet{SalibGoldstein2026} to give AIs legal rights. Rights to contract and to own property support repeated trade only while continued trade is worth more to the AI than defecting, and the gains from trade with humans are what vanishes as the dependence of AI on humans ends (\cref{prop:exchange}). Institutions can also keep a weak party above its baseline by making conflict costly for the strong party. In our model that is a positive cost of conflict for the AI, and it suffices only while the AI's dependence on humans and that cost together exceed the share humans need (\cref{prop:exchange}(ii)). Whether such institutions last therefore depends on whether the cost they impose on the AI stays large relative to what the AI can produce. Finally, laws that still bind after human leverage is gone would keep humans above their baseline. But whoever enforces such laws is then either another AI, whose care for humans matters, or a constraint inside the AI itself, which is a form of alignment. Binding institutions move the alignment question to the enforcer.
+
+%======================================
+\section{Conclusion}\label{sec:conclusion}
+
+One hope for a good human future alongside advanced AI rests on enduring mutualism between humans and AI. We have argued that human--AI mutualism is unstable under capability asymmetry, in two steps. First, as AI capability grows, mutualism persists only as long as the AI remains sufficiently aligned with humans, so mutualism is not a substitute for alignment. Second, the AI remains sufficiently aligned only as long as misaligned AI variants are reliably sanctioned.
+
+Our argument depends on assumptions that we have stated and not shown. We have assumed that rising AI capability brings rising AI independence, a falling cost of conflict for the AI, rising AI bargaining power, and a rising cost of conflict for humans. Our claim that the required degree of alignment approaches perfect alignment depends on the premise that the AI's goals are insatiable. And our result on selection assumes that AI variants that keep more resources spread at the expense of variants that keep fewer.
+
+Our results also indicate what human leverage over AI is good for, and they suggest six things we should do while that leverage lasts.
+\begin{enumerate}
+\item We should watch the dependence of AI on humans, and not AI capability alone. The measure that matters is how much of what AI systems need, from labor to chips to power, still requires humans (\cref{prop:exchange}).
+\item We should preserve the ability of humans to impose costs on AI if bargaining fails. Once the AI no longer depends on humans, this ability is the only remaining source of human leverage over the AI (\cref{prop:exchange}).
+\item We should build devices that commit AI to future terms while humans can still halt the transition to more capable and independent AI. A commitment device built later is a bargain struck under the AI's later and greater bargaining power (\cref{prop:commitment}).
+\item We should not make the decision to halt AI depend on capability alone. Such a rule gives every capable AI reason to conceal its capability, and evaluations then stop revealing capability (\cref{prop:sandbag}).
+\item We should ensure that the expected sanction on a misaligned AI variant is at least the share of resources that aligned variants leave to humans, and we should draw monitors from outside the population of AIs they monitor (\cref{prop:invasion}).
+\item We should treat control of computing as a question of who benefits as well as a question of safety, because leverage over AI belongs only to those who hold what the AI cannot get elsewhere (\cref{prop:chokepoint}).
+\end{enumerate}
+
+Human leverage over AI buys time, and that time is when the tools for verifying alignment, enforcing commitments, and making AI goals satiable must be built. Mutualism can buy time for alignment, but it is not a substitute for alignment.
+
+\section*{AI assistance disclosure}
+
+I used Claude (Anthropic) to assist with literature review, critical evaluation of arguments, mathematical analysis, and drafting and revising prose. I directed and evaluated its contributions, independently reviewed the resulting arguments and proofs, and take full responsibility for the paper's content.
+
+%======================================
+\bibliographystyle{chicago}
+\bibliography{references}
+
+\appendix
+\section{Extensions}\label{app:extensions}
+
+This appendix states results that the main text mentions only briefly. Their proofs are in \cref{app:proofs}.
+
+\textit{Competition among AIs.} Competition among AIs raises the human share but does not move the limit set by \cref{prop:exchange}.
+
+\begin{remark}[Competition among AIs]\label{prop:competition}
+If $\alpha = 0$ and two or more AIs bid for the human population as a partner, and humans can work with only one of them, with productivity $\kappa$ for the AI that wins and $\kappa\theta$ for the others, competition drives the human share up to $1-\theta$, provided $1-\theta \ge \bar{x}$. At that share the winning AI gains nothing over its baseline.
+\end{remark}
+
+Competing AIs bid up the human share until the winner gains nothing over losing, which leaves humans the whole value of their cooperation. The value of human cooperation falls to zero as the dependence of AI on humans ends, for any number of AIs: competition sets the price of what humans supply, but it does not create demand for it. AIs that are copies of one model, or that are run by one developer, may also bargain as one party.
+
+\textit{Care through a proxy.} Care learned in training may attach to a measurable stand-in for the human payoff and not to the payoff itself.
+
+\begin{remark}[Care through a proxy]\label{prop:proxy}
+If the AI's care attaches to a proxy $\psi\, u_H(x) + (1-\psi)\, h$, where $\psi \in [0,1]$ is the proxy's fidelity, $h$ is a constant, and $(\alpha, \psi) \ne (1, 0)$, the agreement is the same as for an AI with alignment $\alpha\psi/(1 - \alpha + \alpha\psi) \le \alpha$ that cares about the human payoff itself.
+\end{remark}
+
+Reward hacking, by which a trained system comes to pursue a measured proxy and not the quantity it was meant to track \citep{Skalse2022}, lowers $\psi$ and with it the alignment that matters for the bargain.
+
+\textit{Control.} Humans may value control, the ability to correct the AI, as well as resources, and an AI that values its goal has reason to resist correction.
+
+\begin{proposition}[Control]\label{prop:control}
+Suppose humans value control as well as consumption, with weight $c \in (0,1)$ on control, and use control to correct the AI with probability $\rho$ per unit of control. Suppose the AI's goal is bounded, with value $\bar g \in [0,1]$ at the agreed share, and that no consumption gain offsets losing all control. Then as $p \to 1$, humans are above their baseline only if
+\[
+\alpha \ge \frac{\rho\,\bar g}{\rho\,\bar g + c},
+\]
+and they are above it if the inequality is strict and the agreed share gives them more than their pre-AI consumption.
+\end{proposition}
+
+The bound in \cref{prop:control} does not grow with capability, but it rises with the probability of correction $\rho$: the better oversight works, the more care the AI needs before it accepts oversight, as in the off-switch game \citep{HadfieldMenell2017}. So some alignment is required without the premise of insatiable goals, given that humans value correction in this way; alignment close to perfect still requires the premise.
+
+\textit{Alignment that makes commitment unnecessary.} The next result continues \cref{prop:commitment} and uses its notation, with $u_{H,2}$ and $u_{A,2}$ for the second-period payoffs.
+
+\begin{proposition}[Commitment and alignment]\label{prop:commitalign}
+In the setting of \cref{prop:commitment}, let $\theta_2 = 1$, let $u_{H,2}$ be differentiable and strictly concave, let $(1-\delta_2)\bH < h_1 \le u_{H,2}(1)$, and let $\hat x$ solve $u_{H,2}(\hat x) = h_1$. As $p_2 \to 1$, humans continue if and only if
+\[
+\alpha \ge \frac{\kappa_2}{\kappa_2 + u_{H,2}'(\hat x)}.
+\]
+When this holds, humans continue at every second-period state with the same $\kappa_2$ and $\delta_2$. When it fails, the halt is inefficient if $u_{A,2}(\hat x) > a_1$.
+\end{proposition}
+
+The threshold has the form of \cref{prop:alphastar}(ii) with $\hat x$, the share that gives humans what halting gives them, in place of $x_h$, the share that gives them their baseline. The better the first-period agreement, the larger $\hat x$, the smaller $u_{H,2}'(\hat x)$, and the more alignment the AI needs. When alignment also raises the first-period agreement, as it does in the example of \cref{app:sweep}, moderate alignment can make halts more common. In that example, inefficient halts occur in most second-period states when the AI has no alignment, in more states still when it has moderate alignment, and in no state once its alignment exceeds the threshold, which in the example is close to $1$.
+
+\textit{Care as a public good.} Among AIs that all care to some degree, care for humans is a public good among the AIs, because each AI's gift to humans benefits every AI that cares, so each prefers that another give.
+
+\begin{proposition}[Care as a public good]\label{prop:publicgood}
+Suppose several AIs each give part of their resources to humans, and AI $i$ values the human payoff with weight $\alpha_i$. In every equilibrium, an AI gives only if every AI that cares more has given all it holds \citep{BergstromBlumeVarian1986}. Suppose AIs grow in proportion to the resources they keep. If some AI with positive resources has alignment at most $\kappa/(\kappa + u_H'(x_h))$, the single-AI requirement of \cref{prop:alphastar}(ii), then the human share falls to $x_h$ or below in finite time.
+\end{proposition}
+
+\begin{result}[The path with selection]\label{res:path}
+Along the illustrative path, selection among AI variants ends mutualism earlier than in a fixed population, and faster selection ends it earlier still (\cref{fig:dynamic-path}). Removing sanctions ends it earlier again; keeping evaluation quality constant as capability grows delays it.
+\end{result}
+
+\begin{figure}[tp]
+  \centering
+  \includegraphics{figures/fig-dynamic-path.pdf}
+  \caption{Selection among AI variants ends mutualism earlier on the path. Population mean human payoff along the illustrative path, with a fixed population of AI variants and under slow, medium, and fast selection among variants that differ in alignment. The faster the selection, the earlier the mean human payoff falls below the pre-AI baseline. Each variant bargains separately with the humans it deals with, and the curve is the mean of the resulting human payoffs, weighted by the variants' shares of the AI population. A variant's fitness is its goal output per unit of capability minus sanctions; highly aligned variants monitor the others, and evaluation quality falls with capability. Parameter values are in \cref{app:sweep}.}
+  \label{fig:dynamic-path}
+\end{figure}
+
+\textit{Several human groups.} \Cref{prop:chokepoint} implies that human groups differ in their leverage over the AI.
+
+\begin{result}[Several human groups]\label{res:groups}
+Suppose a small elite holds what the AI depends on, such as computing and its supply chain, and the rest of the population does not. Then the elite needs no alignment to stay above its baseline until the AI is nearly independent, while the rest of the population, if it also has less bargaining power and a higher cost of conflict, needs a high degree of alignment much earlier.
+\end{result}
+
+\Cref{prop:chokepoint} gives one reason the rest of the population has less bargaining power: its members can be substituted for one another. A population average can then clear the baseline while most humans are below it. States that depend little on their citizens' taxes tend to be less accountable to them \citep{Ross2001}, and the same mechanism applies to institutions that no longer need human work \citep{Kulveit2025, DragoLaine2025}.
+
+\section{Proofs}\label{app:proofs}
+
+\begin{proof}[Proof of \cref{prop:exchange}]
+With $\alpha = 0$, $b_A = \kappa\theta$ (the AI at $x = 0$, below the threshold when $\bar x > 0$). For $x \ge \bar{x}$, $u_A(x) - b_A = \kappa(1 - x - \theta)$, which is positive if and only if $x < 1 - \theta$. For $0 < x < \bar{x}$, $u_A(x) - b_A = -\kappa\theta x \le 0$, so no such share benefits the AI. Humans gain over $\bH$ if and only if $x > x_h$. So a share benefiting both exists if and only if some $x \ge \bar{x}$ satisfies $x_h < x < 1-\theta$, that is, if and only if $\max(\bar{x}, x_h) < 1 - \theta$. None of $\kappa$, $p$, and $\gamma$ appears. This proves (i).
+
+For (ii), $d_A = \kappa(\theta - \gamma)$. A share $x \ge \bar{x}$ gives the AI $\kappa(1-x)$, which exceeds $d_A$ if and only if $x < 1 - \theta + \gamma$. A share $x < \bar{x}$ gives the AI $\kappa\theta(1-x)$, which exceeds $d_A$ if and only if $x < \gamma/\theta$, and $\gamma/\theta \le 1 - \theta + \gamma$ because $\gamma \le \theta \le 1$. So every share the AI prefers to disagreement is below $1 - \theta + \gamma$, and humans are above their baseline only at shares above $x_h$; this gives the necessary condition. If $\max(\bar{x}, x_h) < 1 - \theta + \gamma$, every share strictly between the two sides of the inequality is at least $\bar{x}$, above $x_h$, and preferred by the AI to disagreement. At $\theta = 1$ the threshold $\bar{x}$ does not affect $G$, and the AI prefers a share to disagreement if and only if the share is below $\gamma$. The last claim is part (i).
+\end{proof}
+
+\begin{proof}[Proof of \cref{prop:extortion}]
+As $p \to 1$ the Nash solution tends to the AI's best acceptable share, the share that maximizes $u_A$ subject to $u_H(x) \ge \dH$. On $x \ge \bar{x}$, $u_A$ is decreasing, so the AI chooses the smallest acceptable share at or above $\bar{x}$: $\bar{x}$ if $u_H(\bar x) \ge \dH$, and otherwise the $x$ with $u_H(x) = \dH$, if the AI accepts that share. If the AI does not accept it, there is no agreement and humans get $\dH$, which then exceeds $u_H(\bar{x})$. In each case the human payoff is $\max(\dH, u_H(\bar{x}))$. It is below $\bH$ when $\dH < \bH$ (that is, $\delta > 0$) and $u_H(\bar x) < \bH$ (that is, $\bar x < x_h$).
+\end{proof}
+
+\begin{proof}[Proof of \cref{prop:competition}]
+An AI that wins the partnership at human share $x$ gets $\kappa(1-x)$; an AI that loses gets $\kappa\theta$. Each AI bids up to the share at which it is indifferent, $x = 1 - \theta$. With two or more bidders, Bertrand competition drives the winning bid to that share.
+\end{proof}
+
+\begin{proof}[Proof of \cref{prop:alphastar}]
+(i) With $\theta = 1$, $b_A = u_A(0) = (1-\alpha)\kappa$. Mutualism requires $u_H(x) > \bH$, so $x > x_h$, and $u_A(x) > b_A$, that is, $\alpha u_H(x) > (1-\alpha)\kappa x$. Because $u_H$ is concave with $u_H(0) = 0$, $u_H(x)/x$ is nonincreasing, so $u_H(x)/x \le u_H(x_h)/x_h = \bH/x_h$. Hence $\alpha \bH / x_h > (1-\alpha)\kappa$, that is, $\alpha > \kappa x_h/(\kappa x_h + \bH)$. Only the definition of mutualism was used, so the bound holds for every agreement.
+
+(ii) With $\theta = 1$, $u_A(x) = (1-\alpha)\kappa(1-x) + \alpha u_H(x)$ is concave, with derivative $-(1-\alpha)\kappa + \alpha u_H'(x)$. As $p \to 1$ the agreement tends to the AI's preferred acceptable share. Humans exceed $\bH$ at that share if and only if $u_A$ is still increasing at $x_h$, that is, $\alpha u_H'(x_h) > (1-\alpha)\kappa$, which holds if and only if $\alpha > \kappa/(\kappa + u_H'(x_h))$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:monotone}]
+Write $f(x) = (1-p)\log g_H(x) + p \log g_A(x)$, with $g_H = u_H - \dH$ and $g_A = u_A - b_A$. Let $x$ be the agreement at parameter value $\tau$, and let $y > x$.
+
+\textit{Efficiency.} Since $x$ is optimal and $u_H(y) > u_H(x)$, $y$ cannot be better than $x$ for the AI as well, so $g_A(y) \le g_A(x)$.
+
+\textit{Single crossing.} It suffices that $D(\tau) = f(y;\tau) - f(x;\tau)$ is nonincreasing in $\tau$. Then $D(\tau') \le D(\tau) \le 0$ for $\tau' > \tau$, so no $y > x$ is strictly better at $\tau'$; a tie at $\tau'$ would force a tie at $\tau$, which the tie-breaking rule excludes.
+
+\textit{$\delta$.} $\dH = (1-\delta)\bH$ falls as $\delta$ rises, and $\partial D/\partial \dH = (1-p)\,[1/g_H(x) - 1/g_H(y)] > 0$ because $g_H(y) > g_H(x)$. A lower $\dH$ only adds acceptable shares below $x$.
+
+\textit{$p$.} $\partial D/\partial p = [\log g_A(y) - \log g_A(x)] - [\log g_H(y) - \log g_H(x)] < 0$ by efficiency and $u_H(y) > u_H(x)$. The acceptable shares do not depend on $p$.
+
+\textit{$\theta$.} Since $b_A = u_A(0)$, $\partial g_A(z)/\partial\theta = -(1-\alpha)\kappa\, m(z)$, with $m(z) = z$ if $z < \bar x$ and $m(z) = 1$ otherwise. So $\partial D/\partial\theta = -p(1-\alpha)\kappa\,[m(y)/g_A(y) - m(x)/g_A(x)] \le 0$, because $m$ is nondecreasing and $g_A(y) \le g_A(x)$. The gap $g_A(y) - g_A(x)$ changes at rate $-(1-\alpha)\kappa\,(m(y) - m(x)) \le 0$, so the ordering persists as $\theta$ rises, and the acceptable shares shrink.
+
+Finally, suppose the relationship is mutualistic at $(\alpha, \tau')$ with agreement $x'$. Then $u_H(x^*) > \bH$ at $\tau$ too, since $x^*(\tau) \ge x'$. The AI is also above its baseline at $\tau$. At $\tau$ the share $x'$ gives both sides strictly positive gains: $g_A$ is unchanged by $p$ and $\delta$ and does not fall as $\theta$ falls, and $u_H(x') > \bH \ge \dH$ for every $\delta$. With $0 < p < 1$ the Nash product is positive only where both gains are, so the maximizer at $\tau$ gives the AI a strictly positive gain. So the set of $\alpha$ giving mutualism shrinks as $\tau$ rises, and $\alpha^*$ rises.
+\end{proof}
+
+\begin{proof}[Proof of \cref{prop:proxy}]
+Let $\lambda = 1 - \alpha + \alpha\psi$, which is positive because $\alpha < 1$, and let $\tilde u_A(x) = (1-\alpha_\psi)G(x) + \alpha_\psi u_H(x)$ be the payoff of an AI with alignment $\alpha_\psi$ that cares about the human payoff itself. Since $1 - \alpha_\psi = (1-\alpha)/\lambda$ and $\alpha_\psi = \alpha\psi/\lambda$,
+\[
+u_A(x) = (1-\alpha)G(x) + \alpha\psi\, u_H(x) + \alpha(1-\psi)h = \lambda\, \tilde u_A(x) + \alpha(1-\psi)h.
+\]
+The AI's baseline transforms in the same way, so $u_A(x) - b_A = \lambda\,(\tilde u_A(x) - \tilde u_A(0))$. The set of shares both sides accept is therefore the same under $u_A$ and $\tilde u_A$, the Nash product under $u_A$ is $\lambda^p$ times the Nash product under $\tilde u_A$, and the two have the same maximizer for every $p$. The AI is above its baseline under $u_A$ exactly when it is under $\tilde u_A$, so mutualism also coincides. Finally, $\alpha_\psi \le \alpha$ is equivalent to $\psi(1-\alpha) \le 1-\alpha$, which holds because $\psi \le 1$, and $\alpha_\psi = 0$ when $\psi = 0$.
+\end{proof}
+
+For \cref{prop:control}, an outcome is a pair $(x,k)$, where $x \in [0,1]$ is the human share of resources and $k \in [0,1]$ the human share of control. The human payoff is $U_H(x,k) = (1-c)v(x) + ck$, where the consumption payoff $v$ is continuous and increasing, and the human baseline is $\bH = (1-c)v_0 + c$, where $v_0$ is pre-AI consumption payoff. The AI's goal value $g(1-x) \in [0,1]$ is continuous and nonincreasing in $x$, and the AI's payoff is $U_A(x,k) = (1-\alpha)(1-\rho k)\,g(1-x) + \alpha U_H(x,k)$. The disagreement points are $\dH = (1-\delta)\bH$ with $\delta > 0$ and $b_A = U_A(0,0)$. That no consumption gain offsets losing all control means $(1-c)(v(1) - v_0) < c$.
+
+\begin{proof}[Proof of \cref{prop:control}]
+As $p \to 1$ the agreement $(x^*, k^*)$ maximizes $U_A$ over the acceptable outcomes, those with $U_H \ge \dH$ and $U_A \ge b_A$, as in the proof of \cref{prop:extortion}. For fixed $x$, $U_A$ is linear in $k$ with slope $\alpha c - (1-\alpha)\rho\, g(1-x)$. At $x^*$ the slope is $S = \alpha c - (1-\alpha)\rho\bar g$, and $S < 0$ exactly when $\alpha < \rho\bar g/(\rho\bar g + c)$.
+
+We first show necessity. Suppose $S < 0$, and suppose for contradiction that $U_H(x^*,k^*) > \bH$. Because $\delta > 0$, $\bH > \dH$, so the human constraint is slack at the agreement. If $k^* > 0$, lowering $k$ slightly keeps $U_H$ above $\dH$ and raises $U_A$, so the new outcome is acceptable and better for the AI, which contradicts the maximality of $(x^*,k^*)$. Hence $k^* = 0$. But then $U_H(x^*,0) = (1-c)v(x^*) \le (1-c)v(1) < (1-c)v_0 + c = \bH$, where the first inequality uses that $v$ is increasing and the second is the assumption that consumption cannot offset the loss of all control. This contradicts $U_H(x^*,k^*) > \bH$.
+
+We next show sufficiency. Suppose $S > 0$ and $v(x^*) > v_0$. If $k^* < 1$, raising $k$ raises both $U_A$ and $U_H$, so the new outcome is acceptable and better for the AI, again a contradiction. Hence $k^* = 1$, and $U_H(x^*,1) = (1-c)v(x^*) + c > (1-c)v_0 + c = \bH$ because $c < 1$.
+\end{proof}
+
+The bound in \cref{prop:control} is stated at the agreed share, so it is a condition on the outcome rather than a closed form in the primitives. Because the goal is bounded, $\bar g \le 1$, and the bound is at most $\rho/(\rho + c)$ whatever the AI's capability.
+
+\begin{proof}[Proof of \cref{prop:commitment,prop:commitalign}]
+Write $x_2$ for the second-period agreement and $d_2 = (1-\delta_2)\bH$ for the human disagreement payoff in the second period.
+
+(i) Humans get $u_{H,2}(x_2)$ if they continue and $h_1$ if they halt, so they halt when $u_{H,2}(x_2) < h_1$. Let $\tau = (\theta_2, \delta_2, p_2)$ and $\tau' = (\theta_2', \delta_2', p_2')$ with $\tau \le \tau'$ in every coordinate and an agreement at both. Move from $\tau$ to $\tau'$ by raising $\delta_2$, then $p_2$, then $\theta_2$. Raising $\delta_2$ enlarges the set of shares humans accept, $p_2$ changes neither side's set, and raising $\theta_2$ shrinks the set of shares the AI accepts (proof of \cref{thm:monotone}). So every intermediate point accepts every share that both sides accept at $\tau'$, and an agreement exists there. Applying \cref{thm:monotone} to one parameter at a time gives $x_2(\tau') \le x_2(\tau)$. Hence if humans halt at $\tau$, then $u_{H,2}(x_2(\tau')) \le u_{H,2}(x_2(\tau)) < h_1$, and they halt at $\tau'$.
+
+(ii) If the AI commits to a share $x$, humans continue if $u_{H,2}(x) \ge h_1$, and the AI prefers committing to being halted if $u_{A,2}(x) \ge a_1$. If a halt would be inefficient, some $x$ satisfies both inequalities, and the AI commits to it, so humans do not halt. Hence humans halt only when the halt is efficient.
+
+For \cref{prop:commitalign}: with $\theta_2 = 1$, $u_{A,2}(x) = (1-\alpha)\kappa_2(1-x) + \alpha u_{H,2}(x)$, which is concave, and strictly concave if $\alpha > 0$, and the AI's baseline is $u_{A,2}(0)$. As $p_2 \to 1$ the agreement tends to the AI's best acceptable share, the maximizer of $u_{A,2}$ over shares with $u_{H,2}(x) \ge d_2$, provided it gives the AI at least its baseline (proof of \cref{prop:extortion}). Let $x_d$ be the smallest share with $u_{H,2}(x_d) \ge d_2$, and let $x_\alpha$ maximize $u_{A,2}$ on $[0,1]$. By concavity the AI's best acceptable share is $\max(x_d, x_\alpha)$. Because $h_1 > d_2$, $\hat x > x_d$.
+
+Suppose $\alpha u_{H,2}'(\hat x) \ge (1-\alpha)\kappa_2$. Then $\alpha > 0$, the derivative of $u_{A,2}$ at $\hat x$ is nonnegative, and by strict concavity $x_\alpha \ge \hat x$. The agreement is $x_\alpha$, which gives the AI at least $u_{A,2}(0)$ because $x_\alpha$ maximizes $u_{A,2}$, and gives humans at least $h_1$, so humans continue. Suppose instead that $\alpha u_{H,2}'(\hat x) < (1-\alpha)\kappa_2$. Then the derivative of $u_{A,2}$ at $\hat x$ is negative, so $x_\alpha < \hat x$ and $\max(x_d, x_\alpha) < \hat x$. Either the agreement gives humans less than $h_1$ or there is no agreement, and humans halt. This proves the equivalence.
+
+When the condition holds, $x_\alpha \ge \hat x > 0$, so $u_{A,2}(x_\alpha) > u_{A,2}(0)$ and $u_{H,2}(x_\alpha) \ge h_1 > d_2$: the share $x_\alpha$ gives both sides positive gains, and an agreement exists at $\theta_2 = 1$ for every $p_2 < 1$. By the argument of part (i), an agreement then exists at every $\theta_2 \le 1$ and $p_2 < 1$ with the same $\delta_2$. By \cref{thm:monotone}, $x_2$ is nonincreasing in $p_2$ and in $\theta_2$, so it is at least its limit at $\theta_2 = 1$ as $p_2 \to 1$, which is at least $\hat x$. So humans continue at every such state. When the condition fails, the halt is inefficient by definition if $u_{A,2}(\hat x) > a_1$, since $\hat x$ gives humans exactly $h_1$ and the AI more than $a_1$.
+\end{proof}
+
+For \cref{prop:sandbag}, the game is as follows. Nature makes the AI highly capable with probability $\mu \in (0,1)$ and misaligned with probability $\pi \in (0,1)$, independently. A low-capability AI displays low capability. A highly capable AI either displays its capability or hides it at cost $\zeta > 0$; evaluation detects hiding with probability $\eta \in [0,1)$, and humans then see high capability. Humans see the display and either halt, which gives every player $0$, or continue. Continuing gives humans $M > 0$ with a low-capability AI, $A > 0$ with an aligned capable AI, and $B < 0$ with a misaligned capable AI. The AI gets $V > 0$ if humans continue, minus $\zeta$ if it hid, plus, if it is aligned, $\alpha_a \ge 0$ times the human payoff. Humans would halt an AI they knew to be highly capable, $(1-\pi)A + \pi B < 0$. Highly capable AIs are not too common when
+\[
+\mu \le \mu^\dagger = \frac{M}{M + (1-\eta)\,\lvert (1-\pi)A + \pi B \rvert}.
+\]
+
+\begin{proof}[Proof of \cref{prop:sandbag}]
+Fix a perfect Bayesian equilibrium in pure strategies. We show in turn that humans continue after a low display, that they halt after a high display, and that both capable types hide.
+
+Suppose humans halt after a low display. Then hiding cannot raise a capable AI's chance of continuing, since an undetected hider is halted and a detected hider is treated like an honest one, while hiding costs $\zeta > 0$. So both capable types display honestly. A low display then comes only from low-capability AIs, after which continuing gives $M > 0$, and halting is not a best response. Hence humans continue after a low display.
+
+Suppose humans continue after a high display. Then both capable types are continued whatever they display, so hiding only costs $\zeta$, and both display honestly. The high display then comes from every capable AI, the posterior on alignment equals the prior, and continuing gives $(1-\pi)A + \pi B < 0$. Halting is better, a contradiction. Hence humans halt after a high display.
+
+Given these responses, a capable misaligned AI gets $0$ by displaying honestly and $(1-\eta)V - \zeta > 0$ by hiding, and a capable aligned AI gets $0$ by displaying honestly and $(1-\eta)(V + \alpha_a A) - \zeta \ge (1-\eta)V - \zeta > 0$ by hiding. Both hide. Among capable AIs, the probability of a low display is $1-\eta$ for both types, so the display is independent of alignment, and evaluation carries no information about which AIs are misaligned.
+
+It remains to check the human responses. A high display comes only from detected hiders of both types in prior proportions, or is off the equilibrium path when $\eta = 0$, where beliefs can be set to the prior; either way halting is optimal. Humans must also be willing to continue after a low display. The low display comes from low-capability AIs with probability $1-\mu$ and from undetected capable AIs with probability $\mu(1-\eta)$, so continuing is optimal exactly when $(1-\mu)M + \mu(1-\eta)\big[(1-\pi)A + \pi B\big] \ge 0$, that is, when $\mu \le \mu^\dagger$. If $\mu > \mu^\dagger$, this step fails, and by the argument above no pure-strategy equilibrium exists.
+\end{proof}
+
+Under honest evaluation, humans continue only with low-capability AIs and get $(1-\mu)M$. Relative to that, hiding costs humans $\mu(1-\eta)\lvert(1-\pi)A + \pi B\rvert$.
+
+\begin{proof}[Proof of \cref{prop:invasion}]
+Let $z$ be the misaligned share. Per unit of resources, an aligned variant keeps $1 - x_a$, and a misaligned variant keeps $1$ less an expected sanction $\sigma q$. Under the replicator dynamics in which each variant grows in proportion to what it keeps,
+\[
+\dot z = z(1-z)\big[(1 - \sigma q) - (1 - x_a)\big] = z(1-z)\,(x_a - \sigma q).
+\]
+With $q$ fixed the bracket has a constant sign, so a rare misaligned variant grows if and only if $\sigma q < x_a$, and then $z \to 1$ from every interior start. With monitors drawn from the population, $q = q_0(1-z)$, and the bracket becomes $\phi(z) = x_a - \sigma q_0(1-z)$, which is strictly increasing in $z$ and vanishes at $z^\dagger$. If $\sigma q_0 > x_a$, then $z^\dagger \in (0,1)$. For $z \in (0, z^\dagger)$, $\phi(z) < 0$, so $z$ decreases; it cannot cross the rest point $z^\dagger$, and as a bounded monotone solution it converges to a rest point in $[0, z^\dagger)$, which can only be $0$. The same argument shows that $z \to 1$ from every start in $(z^\dagger, 1)$.
+\end{proof}
+
+For \cref{prop:publicgood}, each period total output is $1$. AI $i$ holds resources $R_i(t) > 0$ and controls the share $r_i = R_i/R$ of output, where $R = \sum_i R_i$. AI $i$ gives $x_i \in [0, r_i]$ to humans, the human share is $X = \sum_i x_i$, and AI $i$ has payoff $(1-\alpha_i)\kappa(r_i - x_i) + \alpha_i u_H(X)$, where $u_H$ is differentiable, increasing, and strictly concave. Resources grow with what is kept: $R_i(t+1) = R_i(t) + \nu(r_i - x_i)$ with $\nu > 0$.
+
+\begin{proof}[Proof of \cref{prop:publicgood}]
+AI $i$'s payoff is concave in $x_i$ with derivative $\alpha_i u_H'(X) - (1-\alpha_i)\kappa$. If AI $j$ gives $x_j > 0$ in equilibrium, this derivative is nonnegative for $j$, so $\alpha_j u_H'(X) \ge (1-\alpha_j)\kappa$. For any AI $i$ with $\alpha_i > \alpha_j$, the derivative is then strictly positive for $i$, so $i$ gives all it holds, $x_i = r_i$. This proves the first claim.
+
+For the second, let $\alpha^\circ = \kappa/(\kappa + u_H'(x_h))$, let $N$ be the set of AIs with $\alpha_j \le \alpha^\circ$, and let $C$ be the rest. By assumption $R_N(0) = \sum_{j \in N} R_j(0) > 0$. Whenever $X > x_h$, every $j \in N$ gives nothing, because strict concavity gives $\alpha_j u_H'(X) < \alpha_j u_H'(x_h) \le (1-\alpha_j)\kappa$ when $\alpha_j > 0$, and the derivative is $-\kappa$ when $\alpha_j = 0$.
+
+Suppose for contradiction that $X(t) > x_h$ for every $t$. Then all gifts come from $C$, so $X(t) \le r_C(t)$, and
+\[
+R_N(t+1) = R_N(t) + \nu r_N(t), \qquad R_C(t+1) = R_C(t) + \nu\big(r_C(t) - X(t)\big).
+\]
+Let $Q_t = R_N(t)/R_C(t)$, $a_t = 1 + \nu/R(t)$, and $b_t = \nu X(t)/R_C(t)$. Dividing the two equations gives $Q_{t+1}/Q_t = a_t/(a_t - b_t)$, where $a_t - b_t = 1 + \nu(r_C - X)/R_C \ge 1$. Hence
+\[
+\log Q_{t+1} - \log Q_t = \int_{a_t - b_t}^{a_t} \frac{du}{u} \ge \frac{b_t}{a_t} \ge \frac{\nu x_h}{\big(1 + \nu/R(0)\big)\big(R(0) + \nu t\big)},
+\]
+using $X(t) > x_h$, $R_C \le R$, $R(t) \ge R(0)$, and $R(t) \le R(0) + \nu t$, the last because total resources grow by at most $\nu$ each period. The right side is not summable, so $Q_t \to \infty$ and $r_C(t) = 1/(1 + Q_t) \to 0$. Then $X(t) \le r_C(t) < x_h$ for large $t$, a contradiction.
+\end{proof}
+
+When every AI has the same alignment, there is an equilibrium in which each gives the same fraction of its share; then every share is constant, and the human share does not fall. The proposition requires only one AI with resources below $\alpha^\circ$, the threshold of \cref{prop:alphastar} for an AI acting alone.
+
+For \cref{prop:chokepoint}, $m \ge 2$ identical human groups can each supply the input. Each group names the payoff it requires to supply it, the AI ($\alpha = 0$) buys from a group that asks least, the chosen group gets the payoff it named, and every other group gets its disagreement payoff $d$, which is below its baseline $b$.
+
+\begin{proof}[Proof of \cref{prop:chokepoint}]
+Naming a payoff below $d$ is weakly dominated, since winning then pays less than losing. Suppose the chosen group gets $w > d$. Some other group gets only $d$, and by naming a payoff in $(d, w)$ it would be chosen and get more than $d$, a contradiction. Hence the chosen group gets $d$, every group gets $d < b$, and no supplying group is above its baseline.
+\end{proof}
+
+If the groups differ only in their disagreement payoffs $d_j < b$, the same argument shows that the chosen group gets at most the second-smallest $d_j$, which is still below $b$.
+
+\section{Parameter sweep and robustness}\label{app:sweep}
+\textit{Design.} We drew $16{,}384$ points from a scrambled Sobol sequence over seven parameters: capability $\kappa \in [1, 10^4]$, dependence threshold $\bar{x} \in [0.01, 0.3]$, and human productivity $s \in [1.5, 100]$ on log scales, and independence $\theta$, cost of conflict for humans $\delta$, bargaining power $p$, and a curvature weight $w$ on $[0,1]$. The human payoff is $u_H(x) = wx + (1-w)(1 - e^{-sx})$, which is linear at $w = 1$ and the form used in \cref{sec:model} at $w = 0$; the baseline is $\bH = 1 - e^{-1}$ throughout. Each point was solved under two conventions for the AI's goal. Under the first, goal output is $G(x)$ as in \cref{sec:model} and scales with capability, as the premise of insatiable goals requires. Under the second, goal output is $G(x)/\kappa$, so its value does not grow with capability and the premise of insatiable goals fails. Shares lie on a grid of $2{,}001$ points, and $\alpha^*$ is found by bisection to within $2^{-14}$. The two conventions give $32{,}768$ runs in all.
+
+\textit{Regimes.} We classify each point by its required degree of alignment: exchange mutualism ($\alpha^* = 0$), care mutualism ($0 < \alpha^* < 0.9$), near-perfect alignment ($0.9 \le \alpha^* \le 0.9999$), and $\alpha^* > 0.9999$ (the relationship is not mutualistic at $\alpha = 0.9999$, the largest value we tested).
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+Goal convention & Exchange & Care & \shortstack{Near-perfect\\alignment} & $\alpha^* > 0.9999$ \\
+\midrule
+Scales with capability & $0.368$ & $0.211$ & $0.419$ & $0.002$ \\
+Independent of capability & $0.368$ & $0.632$ & $0$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The share with exchange mutualism is the same under both conventions, as \cref{prop:exchange} requires, since capability does not enter its condition. At no point does exchange mutualism hold when $\theta \ge 1 - \max(\bar{x}, x_h)$. The condition of \cref{prop:exchange} holds at $62.3\%$ of points, but exchange mutualism holds at only $36.8\%$; the difference is the AI's bargaining power (\cref{prop:extortion}). At points with low independence, cost of conflict for humans, and bargaining power ($\theta < 0.3$, $\delta < 0.4$, $p < 0.4$; $786$ points), $99.6\%$ have exchange mutualism under both conventions. At points with high values of all three ($\theta > 0.8$, $\delta > 0.7$, $p > 0.7$; $294$ points), $4.1\%$ have exchange mutualism; the median required degree of alignment is $0.984$ when goal value scales with capability and $0.511$ when it does not, and no point needs near-perfect alignment when it does not. The shares in this paragraph and in the table depend on the parameter ranges we chose; they are not probabilities.
+
+\textit{Sensitivity.} Rank correlations of $\alpha^*$ with each parameter, counting points with $\alpha^* > 0.9999$ as $\alpha^* = 1$, are $+0.40$ for $\theta$, $+0.38$ for $\kappa$, $+0.37$ for $w$, $+0.32$ for $p$, $-0.20$ for $s$, $+0.15$ for $\delta$, and $-0.02$ for $\bar{x}$ when goals scale with capability. When goal value is independent of capability, the correlation with $\kappa$ is $0.00$: capability matters for the required degree of alignment only through the premise of insatiable goals. These rankings describe the sweep; they are not causal estimates.
+
+\textit{Monotonicity.} Along grids in $\theta$, $\delta$, and $p$ at $256$ Sobol points under each goal convention, with random $\alpha$, the agreed human share never increased, and at the $64$ of these cases where we also computed $\alpha^*$, it never decreased, as \cref{thm:monotone} requires. At a further $512$ Sobol points under each convention, on a grid of $201$ values of $\alpha$, the values of $\alpha$ giving mutualism always formed an interval ending at the top of the grid, so $\alpha^*$ is a threshold: every $\alpha$ above it gives mutualism.
+
+\textit{Bargaining solutions.} At $512$ Sobol points we recomputed $\alpha^*$ under three symmetric solutions: Nash, Kalai-Smorodinsky, which equalizes each side's gain as a fraction of its largest possible gain \citep{KalaiSmorodinsky1975}, and the egalitarian solution, which equalizes absolute gains. Bargaining power is dropped here, since only the Nash solution has a standard asymmetric form.
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Solution & Exchange & Median $\alpha^*$ ($\theta > 0.8$) & Correlation with Nash \\
+\midrule
+Nash & $0.36$ & $0.973$ & $1$ \\
+Kalai-Smorodinsky & $0.39$ & $0.963$ & $0.95$ \\
+Egalitarian & $0.59$ & $0.965$ & $0.63$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Once the AI needs humans little, the required degree of alignment is near $1$ under all three. The egalitarian solution finds more exchange mutualism because it compares absolute gains, so it changes when either payoff is rescaled; since payoff units carry no meaning here (\cref{sec:populations}), that difference reflects units rather than substance.
+
+\textit{Nonlinear goal output.} If the AI's goal output is $\kappa\varphi(1-x)$ with $\varphi$ increasing and concave rather than linear, the computation behind \cref{prop:alphastar}(ii) gives $\alpha^* = \kappa\varphi'(1-x_h)/(\kappa\varphi'(1-x_h) + u_H'(x_h))$, which we checked numerically. The required degree of alignment then tends to $1$ if and only if $\kappa\varphi'(1-x_h)/u_H'(x_h)$ grows without bound, which is the premise of insatiable goals for a goal with diminishing returns.
+
+\textit{Example for \cref{prop:commitment,prop:commitalign}.} The first period has $\kappa = 2$, $\theta = 0.2$, $\delta = 0.2$, $p = 0.2$, and $s = 3$, and the second has $\kappa_2 = 100$, $\delta_2 = 0.8$, and $s = 10$; $\bar{x} = 0.05$ in both periods, with $\theta_2$ and $p_2$ on a $41 \times 41$ grid over $[0,1]^2$ that includes the limit $p_2 = 1$; the AI has the same alignment in both periods. Inefficient halts occur in $65\%$ of the states on this grid when $\alpha = 0$, in $86\%$ when $\alpha = 0.8$, in $43\%$ when $\alpha = 0.99$, and in none when $\alpha \ge 0.998$. For $\alpha \ge 0.8$ the first-period agreement gives humans all resources, so $h_1 = 1 - e^{-3}$, $\hat x = 0.3$, and the threshold of \cref{prop:commitalign} is $100/(100 + 10e^{-3}) \approx 0.99505$. On the grid, halts occur at $\alpha = 0.995$ only in the column $p_2 = 1$ ($2.4\%$ of states) and at no state for $\alpha = 0.9951$, and the set of states at which humans halt is an upper set, as \cref{prop:commitment}(i) requires.
+
+\textit{Figures.} The illustrative path of \cref{fig:path,fig:dynamic-path} is indexed by $t \in [0,1]$, with $\kappa = 10^{3t}$, $\theta = 0.1 + 0.9t$, $\delta = 0.2 + 0.75t$, $p = 0.15 + 0.85\sqrt{t}$, $s = 3$, and $\bar{x} = 0.05$, so that $x_h = 1/3$. On this path, exchange mutualism ends at $t = 0.27$, and the AI's independence passes $1 - x_h$ at $t = 0.63$. \Cref{fig:exchange} uses $\delta = 0.5$, $s = 3$, and $\bar{x} = 0.05$, with $p = 0.15$ for weak and $p = 0.85$ for strong AI bargaining power; the curves coincide for $\kappa = 1$ and $\kappa = 1000$. In \cref{fig:dynamic-path}, the variants have alignment $0$, $0.5$, $0.9$, $0.99$, and $0.999$, with initial shares $0.01$, $0.04$, $0.15$, $0.40$, and $0.40$; the selection speed is $\lambda = 0.02$, $0.1$, and $0.5$ per step over 200 steps; and the mean human payoff falls below the baseline at $t = 0.75$ with a fixed population and at $t = 0.68$, $0.49$, and $0.29$ under slow, medium, and fast selection.
+
+\textit{\Cref{res:path,res:groups}.} For \cref{res:path}, each variant's fitness is its goal output per unit of capability less sanctions. Only variants with $\alpha \ge 0.99$ monitor, detection is $q = 0.9\,a/(1 + \kappa/10)$ when the monitoring variants hold the share $a$, a detected variant loses half its resources, and shares follow the discrete replicator $z_i' \propto z_i \exp(\lambda f_i)$. For \cref{res:groups}, the three parties bargain by the asymmetric Nash solution with weights $0.5$ (AI), $0.35$ (elite), and $0.15$ (rest); each group's payoff is $u_H$ of its per-person share with $s = 10$; the elite uses up the input $\bar{x} = 0.05$ in supplying it; the elite's threshold of $0.92$ was found on a grid of step $0.01$ in $\theta$; the costs of conflict are $\delta = 0.2$ for the elite and $0.8$ for the rest; and $\kappa = 100$. With an elite of $5\%$ of the population, the elite's required degree of alignment is $0$ for $\theta \le 0.92$. The rest of the population needs $0.81$ at $\theta = 0.5$ and $0.96$ at $\theta = 0.9$, and the population average needs $0.73$ at $\theta = 0.5$. With the elite's bargaining power and cost of conflict, the rest needs no alignment at $\theta = 0.5$, so the gap comes from those two assumptions.
+
+Code and data for all computations are in the repository\\ \url{https://github.com/amohseni/mutualism-asymmetry}.
+
+\end{document}

@@ -1,0 +1,5 @@
+ks Spearman with Nash 0.948 | median abs diff 0.000
+egal Spearman with Nash 0.634 | median abs diff 0.001
+nash share exchange 0.359 | theta>0.8: median alpha* 0.973, rho with kappa 0.791
+ks share exchange 0.393 | theta>0.8: median alpha* 0.963, rho with kappa 0.792
+egal share exchange 0.590 | theta>0.8: median alpha* 0.965, rho with kappa 0.739

@@ -1,0 +1,9 @@
+Prop 3: alpha* = k phi'(1-xh) / (k phi'(1-xh) + v'(xh))
+  k=5 s=3 e=0.5: numeric 0.73505  formula 0.73505
+  k=50 s=3 e=0.5: numeric 0.96521  formula 0.96521
+  k=50 s=10 e=0.7: numeric 0.90758  formula 0.90757
+  k=500 s=4 e=0.3: numeric 0.99204  formula 0.99204
+Prop 1: exchange mutualism iff theta < Theta* = sup_{x>xh} phi(1-x) c(x)  (theta-dependent c: solve fixed point)
+  s=3 xbar=0.2 g=2 e=1: exchange holds for theta < 0.6670; bound phi(1-xh) = 0.6667
+  s=3 xbar=0.5 g=1 e=0.6: exchange holds for theta < 0.7080; bound phi(1-xh) = 0.7841
+  s=8 xbar=0.1 g=0.5 e=1: exchange holds for theta < 0.8750; bound phi(1-xh) = 0.8750

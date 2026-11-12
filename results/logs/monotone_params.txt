@@ -1,0 +1,1 @@
+points: 512 | x* increases (violations): {'theta': 0, 'delta': 0, 'p': 0} | alpha* decreases (violations, every 8th point): {'theta': 0, 'delta': 0, 'p': 0}

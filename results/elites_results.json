@@ -1,0 +1,50 @@
+[
+ {
+  "theta": 0.1,
+  "case": "single or complementary elite",
+  "uE": 0.9932620530009145,
+  "uP": 0.731737546530039,
+  "astar_E": 0.0,
+  "astar_P": 0.0
+ },
+ {
+  "theta": 0.1,
+  "case": "substitutable elites",
+  "uE": 0.5654017914929217,
+  "uP": 0.6353334592002875,
+  "astar_E": 0.9713994323730468,
+  "astar_P": 0.0
+ },
+ {
+  "theta": 0.5,
+  "case": "single or complementary elite",
+  "uE": 0.9932620530009145,
+  "uP": 0.5840511497690231,
+  "astar_E": 0.0,
+  "astar_P": 0.8083298034667968
+ },
+ {
+  "theta": 0.5,
+  "case": "substitutable elites",
+  "uE": 0.5654017914929217,
+  "uP": 0.48205941125457163,
+  "astar_E": 0.9713994323730468,
+  "astar_P": 0.9178769531250001
+ },
+ {
+  "theta": 0.9,
+  "case": "single or complementary elite",
+  "uE": 0.8111243971624381,
+  "uP": 0.1969178333011109,
+  "astar_E": 0.0,
+  "astar_P": 0.9561421691894532
+ },
+ {
+  "theta": 0.9,
+  "case": "substitutable elites",
+  "uE": 0.5654017914929217,
+  "uP": 0.160911081404577,
+  "astar_E": 0.9713994323730468,
+  "astar_P": 0.9587664184570311
+ }
+]

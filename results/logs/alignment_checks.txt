@@ -1,0 +1,9 @@
+exchange mutualism ends at t = 0.270 (theta = 0.343), p = path
+exchange mutualism ends at t = 0.565 (theta = 0.608), p = 0.15
+exchange mutualism ends at t = 0.345 (theta = 0.410), p = 0.5
+dependence bound theta = 1 - x_h = 2/3 is reached at t = 0.630
+Prop 4 at kappa = 10, s = 3: bound (i) 0.8406, value (ii) 0.9006
+   p = 0.100: alpha* = 0.8406 at delta = 0, 0.8455 at delta = 0.5
+   p = 0.500: alpha* = 0.8406 at delta = 0, 0.8673 at delta = 0.5
+   p = 0.900: alpha* = 0.8406 at delta = 0, 0.8933 at delta = 0.5
+   p = 0.999: alpha* = 0.8406 at delta = 0, 0.9005 at delta = 0.5

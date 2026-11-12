@@ -1,0 +1,4 @@
+human share kept by aligned variant 0.596, by misaligned 0.000
+sigma*q0=0.4: tipping point z+ = None; final z from z0=0.01,0.2,0.4,0.6: [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)] | independent monitors: [np.float64(1.0), np.float64(1.0)]
+sigma*q0=0.7: tipping point z+ = 0.149; final z from z0=0.01,0.2,0.4,0.6: [np.float64(0.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)] | independent monitors: [np.float64(0.0), np.float64(0.0)]
+sigma*q0=0.9: tipping point z+ = 0.338; final z from z0=0.01,0.2,0.4,0.6: [np.float64(0.0), np.float64(0.0), np.float64(1.0), np.float64(1.0)] | independent monitors: [np.float64(0.0), np.float64(0.0)]

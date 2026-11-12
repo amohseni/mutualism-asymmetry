@@ -1,0 +1,16 @@
+h=0.1 e=0.0 honest uH=0.900 | sand(a,m)=(1,1) cont(L,H)=(1,0) uH=0.880
+h=0.1 e=0.3 honest uH=0.900 | sand(a,m)=(1,1) cont(L,H)=(1,0) uH=0.886
+h=0.1 e=0.6 honest uH=0.900 | sand(a,m)=(1,1) cont(L,H)=(1,0) uH=0.892
+h=0.1 e=0.9 honest uH=0.900 | sand(a,m)=(0,0) cont(L,H)=(1,0) uH=0.900
+h=0.3 e=0.0 honest uH=0.700 | sand(a,m)=(1,1) cont(L,H)=(1,0) uH=0.640
+h=0.3 e=0.3 honest uH=0.700 | sand(a,m)=(1,1) cont(L,H)=(1,0) uH=0.658
+h=0.3 e=0.6 honest uH=0.700 | sand(a,m)=(1,1) cont(L,H)=(1,0) uH=0.676
+h=0.3 e=0.9 honest uH=0.700 | sand(a,m)=(0,0) cont(L,H)=(1,0) uH=0.700
+h=0.5 e=0.0 honest uH=0.500 | sand(a,m)=(1,1) cont(L,H)=(1,0) uH=0.400
+h=0.5 e=0.3 honest uH=0.500 | sand(a,m)=(1,1) cont(L,H)=(1,0) uH=0.430
+h=0.5 e=0.6 honest uH=0.500 | sand(a,m)=(1,1) cont(L,H)=(1,0) uH=0.460
+h=0.5 e=0.9 honest uH=0.500 | sand(a,m)=(0,0) cont(L,H)=(1,0) uH=0.500
+h=0.7 e=0.0 honest uH=0.300 | sand(a,m)=(1,1) cont(L,H)=(1,0) uH=0.160
+h=0.7 e=0.3 honest uH=0.300 | sand(a,m)=(1,1) cont(L,H)=(1,0) uH=0.202
+h=0.7 e=0.6 honest uH=0.300 | sand(a,m)=(1,1) cont(L,H)=(1,0) uH=0.244
+h=0.7 e=0.9 honest uH=0.300 | sand(a,m)=(0,0) cont(L,H)=(1,0) uH=0.300
